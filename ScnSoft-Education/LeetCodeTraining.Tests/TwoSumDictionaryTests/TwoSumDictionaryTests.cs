@@ -1,13 +1,8 @@
-﻿using LeetCodeTraining.TwoSum;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LeetCodeTraining.TwoSumDictionary;
 
-namespace LeetCodeTraining.Tests
+namespace LeetCodeTraining.Tests.TwoSumTests
 {
-    public class TwoSumSolutionTests
+    public class TwoSumDictionarySolutionTests
     {
         [Fact]
         public void TwoSum_ArrayWith2Nums()
@@ -18,12 +13,12 @@ namespace LeetCodeTraining.Tests
             var expectedResult = new int[] { 0, 1 };
 
             //Act
-            var result = TwoSumSolution.TwoSum(nums, target);
+            var result = TwoSumDictionarySolution.TwoSum(nums, target);
 
             //Assert
             Assert.Equal(expectedResult.Length, result.Length);
             Array.Sort(result);
-            for(int i = 0; i< expectedResult.Length; i++)
+            for (int i = 0; i < expectedResult.Length; i++)
             {
                 Assert.Equal(expectedResult[i], result[i]);
             }
@@ -38,7 +33,7 @@ namespace LeetCodeTraining.Tests
             var expectedResult = new int[] { 1, 2 };
 
             //Act
-            var result = TwoSumSolution.TwoSum(nums, target);
+            var result = TwoSumDictionarySolution.TwoSum(nums, target);
 
             //Assert
             Assert.Equal(expectedResult.Length, result.Length);
@@ -58,7 +53,7 @@ namespace LeetCodeTraining.Tests
             var expectedResult = new int[] { 0, 1 };
 
             //Act
-            var result = TwoSumSolution.TwoSum(nums, target);
+            var result = TwoSumDictionarySolution.TwoSum(nums, target);
 
             //Assert
             Assert.Equal(expectedResult.Length, result.Length);
