@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LeetCodeTraining.LongestSubstring
+﻿namespace LeetCodeTraining.LongestSubstring
 {
     //https://leetcode.com/problems/longest-substring-without-repeating-characters/
     public static class LongestSubstringSolution
@@ -21,8 +15,8 @@ namespace LeetCodeTraining.LongestSubstring
                 return 1;
             }
 
-            StringBuilder longestString = new StringBuilder();
-            string output = String.Empty;
+            int longestSubstringLength = 0;
+            int currentSubstringLength = 0;
 
             Dictionary<char, int> usedCharacters = new Dictionary<char, int>();
 
@@ -33,22 +27,22 @@ namespace LeetCodeTraining.LongestSubstring
                     if (!usedCharacters.ContainsKey(s[j]))
                     {
                         usedCharacters.Add(s[j], j);
-                        longestString.Append(s[j]);
+                        currentSubstringLength += 1;
                     }
                     else
                     {
                         usedCharacters.Clear();
-                        if (longestString.ToString().Length > output.Length)
+                        if (currentSubstringLength > longestSubstringLength)
                         {
-                            output = longestString.ToString();
+                            longestSubstringLength = currentSubstringLength;
                         }
-                        longestString = new StringBuilder();
+                        currentSubstringLength = 0;
                         break;
                     }
                 }
             }
 
-            return output.Length;
+            return longestSubstringLength;
         }
     }
 }
