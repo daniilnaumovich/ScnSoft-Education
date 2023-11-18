@@ -5,59 +5,60 @@
     {
         public static string LongestPalindrome(string s)
         {
-            string longestPalindromeSubstring = String.Empty;
-            string currentSub = String.Empty;
-            int startIndex;
-            int endIndex;
-
             if (s.Length == 1)
             {
                 return s;
             }
 
+            int startIndex = 0;
+            int maxLength = 0;
+            int currLength = 0;
+            int start;
+            int end;
+
             for (int i = 0; i < s.Length - 1; i++)
             {
-                for (int j = 0; j <= 1; j++)
+                currLength = 1;
+                start = i - 1;
+                end = i + 1;
+
+                while (start >= 0 && end < s.Length && s[start] == s[end])
                 {
-                    if (j == 0)
+                    currLength += 2;
+                    start--;
+                    end++;
+                }
+
+                if (currLength > maxLength)
+                {
+                    maxLength = currLength;
+                    startIndex = start + 1;
+                }
+
+                currLength = 0;
+
+                if (s[i + 1] == s[i])
+                {
+                    currLength = 2;
+                    start = i - 1;
+                    end = i + 2;
+
+                    while (start >= 0 && end < s.Length && s[start] == s[end])
                     {
-                        currentSub = s[i].ToString();
-                        startIndex = i;
-                        endIndex = i;
-                    }
-                    else if (j == 1 && s[i + 1] == s[i])
-                    {
-                        currentSub = s[i].ToString() + s[i + 1].ToString();
-                        startIndex = i;
-                        endIndex = i + 1;
-                    }
-                    else
-                    {
-                        break;
+                        currLength += 2;
+                        start--;
+                        end++;
                     }
 
-                    while (startIndex - 1 >= 0 && endIndex + 1 < s.Length)
+                    if (currLength > maxLength)
                     {
-                        if (s[startIndex - 1] == s[endIndex + 1])
-                        {
-                            currentSub = $"{s[startIndex - 1]}{currentSub}{s[endIndex + 1]}";
-                            startIndex = startIndex - 1;
-                            endIndex = endIndex + 1;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-
-                    if (currentSub.Length > longestPalindromeSubstring.Length)
-                    {
-                        longestPalindromeSubstring = currentSub;
+                        maxLength = currLength;
+                        startIndex = start + 1;
                     }
                 }
             }
 
-            return longestPalindromeSubstring;
+            return s.Substring(startIndex, maxLength);
         }
     }
 }

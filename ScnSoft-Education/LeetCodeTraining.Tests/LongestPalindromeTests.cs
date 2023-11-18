@@ -5,7 +5,7 @@ namespace LeetCodeTraining.Tests
     public class LongestPalindromeTests
     {
         [Theory]
-        [InlineData("babad", new string[] { "bab", "aba"})]
+        [InlineData("babad", new string[] { "bab", "aba" })]
         [InlineData("cbbd", new string[] { "bb" })]
         [InlineData("ccc", new string[] { "ccc" })]
         [InlineData("a", new string[] { "a" })]
