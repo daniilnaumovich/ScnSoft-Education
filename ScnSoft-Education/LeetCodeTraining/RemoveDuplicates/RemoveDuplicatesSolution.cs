@@ -5,16 +5,18 @@
     {
         public static int RemoveDuplicates(int[] nums)
         {
-            HashSet<int> uniqueNums = new HashSet<int>(nums);
+            int index = 1;
 
-            int index = 0;
-            foreach (int num in uniqueNums)
+            for (int i = 1; i < nums.Length; i++)
             {
-                nums[index] = num;
-                index++;
+                if (nums[i] > nums[i - 1])
+                {
+                    nums[index] = nums[i];
+                    index++;
+                }
             }
 
-            return uniqueNums.Count();
+            return index;
         }
     }
 }
