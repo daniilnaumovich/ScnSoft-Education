@@ -15,6 +15,7 @@
                     currentIndex++;
                 }
             }
+
             return currentIndex;
         }
     }
