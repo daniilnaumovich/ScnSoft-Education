@@ -6,12 +6,12 @@ namespace LeetCodeTraining.Tests
     {
         [Theory]
         [InlineData(1, new string[] { "()" })]
-        [InlineData(2, new string[] { "()()", "(())"})]
+        [InlineData(2, new string[] { "()()", "(())" })]
         [InlineData(3, new string[] { "((()))", "(()())", "(())()", "()(())", "()()()" })]
         [InlineData(4, new string[] { "()()()()", "(())()()", "()(())()", "()()(())",
                                       "(()())()", "((()))()", "()(()())", "()((()))",
                                       "(())(())", "(()()())", "((())())", "(()(()))",
-                                      "((()()))", "(((())))" })]       
+                                      "((()()))", "(((())))" })]
         public void GenerateParenthesisTests(int n, string[] expectedResult)
         {
             //Arrange
