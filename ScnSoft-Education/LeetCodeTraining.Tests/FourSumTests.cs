@@ -6,7 +6,7 @@ namespace LeetCodeTraining.Tests
     {
         [Theory]
         [MemberData(nameof(Data))]
-        public void ThreeSumTest(int[] nums, int target, IList<IList<int>> expectedResult)
+        public void FourSumTest(int[] nums, int target, IList<IList<int>> expectedResult)
         {
             //Act
             IList<IList<int>> result = FourSumSolution.FourSum(nums, target);
