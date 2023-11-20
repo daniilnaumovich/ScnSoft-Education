@@ -29,7 +29,7 @@ namespace LeetCodeTraining.Tests
             Assert.Equal(expectedResult, result);
         }
 
-        public ListNode InitializeNode(int[] numbers)
+        private ListNode InitializeNode(int[] numbers)
         {
             if (numbers.Length == 0)
             {
@@ -52,7 +52,7 @@ namespace LeetCodeTraining.Tests
             return h;
         }
 
-        public string DisplayNode(ListNode node)
+        private string DisplayNode(ListNode node)
         {
             StringBuilder sb = new StringBuilder();
 
