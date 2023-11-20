@@ -25,10 +25,12 @@ namespace LeetCodeTraining.Tests
         })]
         public void LetterCombinationsTests(string digits, string[] expectedResult)
         {
+            //Arrange
+            Array.Sort(expectedResult);
+
             //Act
             string[] result = PhoneNumberCombinationsSolution.LetterCombinations(digits).ToArray();
-            Array.Sort(result);
-            Array.Sort(expectedResult);
+            Array.Sort(result);       
 
             //Assert
             Assert.Equal(expectedResult, result);
