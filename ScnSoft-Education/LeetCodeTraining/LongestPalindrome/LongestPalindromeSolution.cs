@@ -12,37 +12,27 @@
 
             int startIndex = 0;
             int maxLength = 0;
-            int currLength = 0;
+            int currLength;
             int start;
             int end;
 
-            for (int i = 0; i < s.Length - 1; i++)
+            for (int i = 0; i < 2 * s.Length - 2; i++)
             {
-                currLength = 1;
-                start = i - 1;
-                end = i + 1;
+                start = i/2 - 1;
 
-                while (start >= 0 && end < s.Length && s[start] == s[end])
+                if (i % 2 == 1)
                 {
-                    currLength += 2;
-                    start--;
-                    end++;
-                }
-
-                if (currLength > maxLength)
-                {
-                    maxLength = currLength;
-                    startIndex = start + 1;
-                }
-
-                currLength = 0;
-
-                if (s[i + 1] == s[i])
-                {
+                    end = i/2 + 2;
                     currLength = 2;
-                    start = i - 1;
-                    end = i + 2;
+                }
+                else
+                {
+                    end = i/2 + 1;
+                    currLength = 1;
+                }
 
+                if (i % 2 == 0 || (i % 2 == 1 && s[i/2 + 1] == s[i/2]))
+                {
                     while (start >= 0 && end < s.Length && s[start] == s[end])
                     {
                         currLength += 2;

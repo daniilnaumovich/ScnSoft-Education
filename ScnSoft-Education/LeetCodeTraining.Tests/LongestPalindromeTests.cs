@@ -12,6 +12,7 @@ namespace LeetCodeTraining.Tests
         [InlineData("dd", new string[] { "dd" })]
         [InlineData("abab", new string[] { "aba", "bab" })]
         [InlineData("cccc", new string[] { "cccc" })]
+        [InlineData("babba", new string[] { "abba" })]
         [InlineData("bcbabdb", new string[] { "bcb", "bab", "bdb" })]
         public void LongestPalindromeTest(string input, string[] expectedResults)
         {
