@@ -32,10 +32,8 @@
             }
 
             int resultIndex = (nums1.Length + nums2.Length + 1) / 2;
-
             int left = 0;
             int right = shorter.Length;
-
             int sr = 0,
                 sl = 0,
                 lr = 0,
@@ -44,7 +42,6 @@
             while (left <= right)
             {
                 int shorterPtr = (right + left) / 2;
-
                 int longerPtr = resultIndex - shorterPtr;
 
                 sr = shorterPtr < shorter.Length ? shorter[shorterPtr] : int.MaxValue;
@@ -60,10 +57,8 @@
                 {
                     right = shorterPtr - 1;
                 }
-                else
-                {
-                    left = shorterPtr + 1;
-                }
+
+                left = shorterPtr + 1;
             }
 
             if ((shorter.Length + longer.Length) % 2 == 0)
