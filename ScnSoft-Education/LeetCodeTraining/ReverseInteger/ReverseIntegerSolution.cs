@@ -10,7 +10,6 @@ namespace LeetCodeTraining.ReverseInteger
             string positiveString = x.ToString();
             int sign = 1;
             StringBuilder builder = new StringBuilder();
-            int result = 0;
 
             if (x < 0)
             {
@@ -23,7 +22,7 @@ namespace LeetCodeTraining.ReverseInteger
                 builder.Append(positiveString[positiveString.Length - 1 - i]);
             }
 
-            if (!int.TryParse(builder.ToString(), out result))
+            if (!int.TryParse(builder.ToString(), out int result))
             {
                 return 0;
             }
