@@ -14,7 +14,7 @@ namespace LeetCodeTraining.Tests
         [InlineData("A", 3, "A")]
         [InlineData("ABC", 1, "ABC")]
         [InlineData("ABC", 2, "ACB")]
-        public void FindMedianSortedArraysTest(string input, int numRows, string expectedResult)
+        public void ZigzagConversionTest(string input, int numRows, string expectedResult)
         {
             //Act
             string result = ZigzagConversionSolution.Convert(input, numRows);
