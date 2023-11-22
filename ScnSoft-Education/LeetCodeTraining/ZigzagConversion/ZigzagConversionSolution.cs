@@ -24,7 +24,7 @@
                 {
                     result[counter] = s[lookupIndex];
 
-                    CalculateIndeces(ref counter, ref lookupIndex, ref fromTop, row);
+                    CalculateIndeces(row);
 
                     if (lookupIndex >= s.Length || counter >= s.Length)
                     {
@@ -35,24 +35,23 @@
 
             return new string(result);
 
-            void CalculateIndeces(ref int counter, ref int lookupIndex, ref bool fromTop, int row)
+            void CalculateIndeces(int row)
             {
                 if (fromTop)
                 {
                     counter++;
                     lookupIndex = lookupIndex + 2 * numRows - 2 * row - 2;
                     fromTop = false;
+                    return;
                 }
-                else
-                {
-                    if (lookupIndex % (numRows - 1) != 0)
-                    {
-                        counter++;
-                    }
 
-                    lookupIndex = lookupIndex + 2 * row;
-                    fromTop = true;
+                if (lookupIndex % (numRows - 1) != 0)
+                {
+                    counter++;
                 }
+
+                lookupIndex = lookupIndex + 2 * row;
+                fromTop = true;
             }
         }
     }
