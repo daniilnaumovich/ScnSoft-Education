@@ -7,7 +7,7 @@ namespace LeetCodeTraining.Tests
         [Theory]
         [InlineData(new int[] { 1, 2, 3 }, new int[] { 1, 3, 2 })]
         [InlineData(new int[] { 3, 2, 1 }, new int[] { 1, 2, 3 })]
-        [InlineData(new int[] { 1, 1, 5 }, new int[] { 1, 5, 1})]
+        [InlineData(new int[] { 1, 1, 5 }, new int[] { 1, 5, 1 })]
         [InlineData(new int[] { 1, 4, 2, 5, 3 }, new int[] { 1, 4, 3, 2, 5 })]
         [InlineData(new int[] { 2, 3, 3, 1 }, new int[] { 3, 1, 2, 3 })]
         [InlineData(new int[] { 1 }, new int[] { 1 })]
