@@ -57,7 +57,5 @@ namespace LeetCodeTraining.ZigzagConversion
                 }
             }
         }
-
-        
     }
 }
