@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-
-namespace LeetCodeTraining.ZigzagConversion
+﻿namespace LeetCodeTraining.ZigzagConversion
 {
     //https://leetcode.com/problems/zigzag-conversion/
     public static class ZigzagConversionSolution
