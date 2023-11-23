@@ -12,7 +12,7 @@ namespace LeetCodeTraining.GenerateParentheses
                 return new List<string>() { "()" };
             }
 
-            StringBuilder sb;
+            StringBuilder sb = new StringBuilder();
             List<string> currentList = (List<string>)GenerateParenthesis(n - 1);
             HashSet<string> result = new HashSet<string>();
 
@@ -20,12 +20,13 @@ namespace LeetCodeTraining.GenerateParentheses
             {
                 for (int i = 0; i <= s.Length; i++)
                 {
-                    sb = new StringBuilder(s);
+                    sb.Append(s);
                     result.Add(sb.Insert(i, "()").ToString());
+                    sb.Clear();
                 }
             }
 
-            return result.ToList<string>();
+            return result.ToList();
         }
     }
 }
