@@ -8,13 +8,13 @@ namespace LeetCodeTraining.ReverseInteger
         public static int Reverse(int x)
         {
             string positiveString = x.ToString();
-            int sign = 1;
+            bool isPositive = true;
             StringBuilder builder = new StringBuilder();
 
             if (x < 0)
             {
-                sign = -1;
-                positiveString = (-1 * x).ToString();
+                isPositive = false;
+                positiveString = positiveString.Substring(1);
             }
 
             for (int i = 0; i < positiveString.Length; i++)
@@ -27,7 +27,7 @@ namespace LeetCodeTraining.ReverseInteger
                 return 0;
             }
 
-            return sign * result;
+            return isPositive ? result : -result;
         }
     }
 }
