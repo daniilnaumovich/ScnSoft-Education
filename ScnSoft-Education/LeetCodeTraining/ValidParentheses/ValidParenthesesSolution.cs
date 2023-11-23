@@ -5,6 +5,7 @@
     {
         public static bool IsValid(string s)
         {
+            Stack<char> st = new Stack<char>();
             Dictionary<char, char> parentheses = new Dictionary<char, char>()
             {
                 {'(', ')'},
@@ -12,16 +13,13 @@
                 {'[', ']'}
             };
 
-            Stack<char> st = new Stack<char>();
-            char current;
-
             for (int i = 0; i < s.Length; i++)
             {
                 if (parentheses.ContainsKey(s[i]))
                 {
                     st.Push(s[i]);
                 }
-                else if (st.TryPeek(out current) == true && parentheses[st.Peek()] == s[i])
+                else if (st.TryPeek(out char p) && parentheses[p] == s[i])
                 {
                     st.Pop();
                 }
@@ -31,7 +29,7 @@
                 }
             }
 
-            if (st.TryPeek(out current) == true)
+            if (st.TryPeek(out char c))
             {
                 return false;
             }
