@@ -6,7 +6,7 @@ namespace LeetCodeTraining.Tests
     {
         [Theory]
         [MemberData(nameof(Data))]
-        public void SwapPairsTests(ListNode node, int k, ListNode expectedResult)
+        public void ReverseKGroup(ListNode node, int k, ListNode expectedResult)
         {
             //Act
             ListNode result = ReverseNodesInKGroupsSolution.ReverseKGroup(node, k);
