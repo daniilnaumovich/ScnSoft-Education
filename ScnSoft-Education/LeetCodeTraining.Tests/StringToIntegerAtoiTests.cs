@@ -16,6 +16,7 @@ namespace LeetCodeTraining.Tests
         [InlineData("0", 0)]
         [InlineData("2000000000000000", int.MaxValue)]
         [InlineData("-1111111111111111111", int.MinValue)]
+        [InlineData("  0000000000012345678", 12345678)]
         public void MyAtoiTest(string s, int expectedResult)
         {
             //Act

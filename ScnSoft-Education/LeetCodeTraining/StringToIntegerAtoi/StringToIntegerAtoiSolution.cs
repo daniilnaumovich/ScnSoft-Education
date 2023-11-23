@@ -1,17 +1,17 @@
-﻿namespace LeetCodeTraining.StringToIntegerAtoi
+﻿using System.Text;
+
+namespace LeetCodeTraining.StringToIntegerAtoi
 {
     //https://leetcode.com/problems/string-to-integer-atoi/
     public static class StringToIntegerAtoiSolution
     {
         public static int MyAtoi(string s)
         {
-            string numberString = String.Empty;
-            long result;
-            int sign = 1;
-
+            StringBuilder numberString = new StringBuilder();
+            bool isNegative = false;
             int i = 0;
 
-            if (s == String.Empty)
+            if (s == string.Empty)
             {
                 return 0;
             }
@@ -23,7 +23,7 @@
 
             if (i < s.Length && s[i] == '-')
             {
-                sign = -1;
+                isNegative = true;
                 i++;
             }
             else if (i < s.Length && s[i] == '+')
@@ -31,11 +31,11 @@
                 i++;
             }
 
-            if (i < s.Length && Char.IsDigit(s[i]))
+            if (i < s.Length && char.IsDigit(s[i]))
             {
-                while (i < s.Length && Char.IsDigit(s[i]))
+                while (i < s.Length && char.IsDigit(s[i]))
                 {
-                    numberString += s[i];
+                    numberString.Append(s[i]);
                     i++;
                 }
             }
@@ -44,34 +44,29 @@
                 return 0;
             }
 
-            numberString = numberString.TrimStart('0');
+            string resultString = numberString.ToString().TrimStart('0');
 
-            if (sign > 0)
+            if (isNegative && int.MinValue.ToString().Length < resultString.Length)
             {
-                if (int.MaxValue.ToString().Length < numberString.Length)
+                return int.MinValue;
+            }
+            if (!isNegative && int.MaxValue.ToString().Length < resultString.Length)
+            {
+                return int.MaxValue;
+            }
+
+            if (long.TryParse(resultString, out long result))
+            {
+                if ((isNegative ? -result : result) > int.MaxValue)
                 {
                     return int.MaxValue;
                 }
-            }
-            if (sign < 0)
-            {
-                if (int.MinValue.ToString().Length < numberString.Length)
+                if ((isNegative ? -result : result) < int.MinValue)
                 {
                     return int.MinValue;
                 }
-            }
 
-            if (long.TryParse(numberString, out result))
-            {
-                if (result * sign > int.MaxValue)
-                {
-                    return int.MaxValue;
-                }
-                if (result * sign < int.MinValue)
-                {
-                    return int.MinValue;
-                }
-                return (int)(result * sign);
+                return (int)(isNegative ? -result : result);
             }
 
             return 0;
