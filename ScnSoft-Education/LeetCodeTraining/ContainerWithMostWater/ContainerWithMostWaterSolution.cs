@@ -7,9 +7,7 @@
         {
             int leftIndex = 0;
             int rightIndex = height.Length - 1;
-            int currentVolume;
-
-            int maxVolume = Math.Min(height[0], height[height.Length - 1]) * (height.Length - 1);
+            int maxVolume = GetCurrentVolume();
 
             if (height.Length == 2)
             {
@@ -20,43 +18,39 @@
             {
                 while (height[leftIndex] <= height[rightIndex])
                 {
-                    if (leftIndex >= rightIndex)
+                    if (rightIndex <= leftIndex++)
                     {
-                        break;
+                        return maxVolume;
                     }
 
-                    leftIndex++;
-
-                    currentVolume = Math.Min(height[leftIndex], height[rightIndex]) * (rightIndex - leftIndex);
-                    if (currentVolume > maxVolume)
-                    {
-                        maxVolume = currentVolume;
-                    }
+                    SetMaxVolume();
                 }
 
                 while (height[rightIndex] <= height[leftIndex])
                 {
-                    if (rightIndex <= leftIndex)
+                    if (rightIndex-- <= leftIndex)
                     {
-                        break;
+                        return maxVolume;
                     }
 
-                    rightIndex--;
-
-                    currentVolume = Math.Min(height[leftIndex], height[rightIndex]) * (rightIndex - leftIndex);
-                    if (currentVolume > maxVolume)
-                    {
-                        maxVolume = currentVolume;
-                    }
-                }
-
-                if (leftIndex >= rightIndex)
-                {
-                    break;
+                    SetMaxVolume();
                 }
             }
 
-            return maxVolume;
+            int GetCurrentVolume()
+            {
+                return Math.Min(height[leftIndex], height[rightIndex]) * (rightIndex - leftIndex);
+            }
+
+            void SetMaxVolume()
+            {
+                int currentVolume = GetCurrentVolume();
+
+                if (currentVolume > maxVolume)
+                {
+                    maxVolume = currentVolume;
+                }
+            }
         }
     }
 }
