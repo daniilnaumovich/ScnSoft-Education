@@ -7,6 +7,12 @@ namespace LeetCodeTraining.PhoneNumberCombinations
     {
         public static IList<string> LetterCombinations(string digits)
         {
+            if (digits.Length == 0)
+            {
+                return new List<string>();
+            }
+
+            List<string> output = new List<string>();
             Dictionary<char, string> numberToChar = new Dictionary<char, string>()
             {
                 {'2', "abc"},
@@ -19,65 +25,43 @@ namespace LeetCodeTraining.PhoneNumberCombinations
                 {'9', "wxyz"}
             };
 
-            if (digits.Length == 0)
+            foreach (char c in numberToChar[digits[^1]])
             {
-                return new string[] { };
+                output.Add(c.ToString());
             }
 
-            List<string> output = new List<string>();
-            if (numberToChar.ContainsKey(digits[^1]))
-            {
-                foreach (char c in numberToChar[digits[^1]])
-                {
-                    output.Add(c.ToString());
-                }
-
-                if (digits.Length == 1)
-                {
-                    return output;
-                }
-            }
-            else
+            if (digits.Length == 1)
             {
                 return output;
             }
 
             for (int i = digits.Length - 2; i >= 0; i--)
             {
-                if (numberToChar.ContainsKey(digits[i]))
-                {
-                    AppendLettersOfDigit(output, numberToChar[digits[i]]);
-                }
-                else
-                {
-                    return output;
-                }
+                AppendLettersOfDigit(numberToChar[digits[i]]);
             }
 
             return output;
-        }
 
-        public static List<string> AppendLettersOfDigit(List<string> input, string chars)
-        {
-            StringBuilder builder = new StringBuilder();
-
-            for (int i = input.Count - 1; i >= 0; i--)
+            void AppendLettersOfDigit(string chars)
             {
-                for (int j = 0; j < chars.Length - 1; j++)
+                StringBuilder builder = new StringBuilder();
+
+                for (int i = output.Count - 1; i >= 0; i--)
                 {
-                    input.Insert(i, input[i]);
+                    for (int j = 0; j < chars.Length - 1; j++)
+                    {
+                        output.Insert(i, output[i]);
+                    }
+                }
+
+                for (int k = 0; k < output.Count; k++)
+                {
+                    builder.Append(output[k]);
+                    builder.Insert(0, chars[k % chars.Length]);
+                    output[k] = builder.ToString();
+                    builder.Clear();
                 }
             }
-
-            for (int k = 0; k < input.Count; k++)
-            {
-                builder.Append(input[k]);
-                builder.Insert(0, chars[k % chars.Length]);
-                input[k] = builder.ToString();
-                builder.Clear();
-            }
-
-            return input;
         }
     }
 }
