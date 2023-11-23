@@ -8,7 +8,6 @@ namespace LeetCodeTraining.IntegerToRoman
         public static string IntToRoman(int num)
         {
             StringBuilder result = new StringBuilder();
-
             Dictionary<int, string> intToSymbol = new Dictionary<int, string>()
             {
                 {1000,  "M"},
@@ -28,17 +27,10 @@ namespace LeetCodeTraining.IntegerToRoman
 
             foreach (var rep in intToSymbol)
             {
-                while (true)
+                while (num >= rep.Key)
                 {
-                    if (num >= rep.Key)
-                    {
-                        num -= rep.Key;
-                        result.Append(rep.Value);
-                    }
-                    else
-                    {
-                        break;
-                    }
+                    num -= rep.Key;
+                    result.Append(rep.Value);
                 }
             }
 
