@@ -1,11 +1,13 @@
-﻿namespace LeetCodeTraining.LongestCommonPrefix
+﻿using System.Text;
+
+namespace LeetCodeTraining.LongestCommonPrefix
 {
     //https://leetcode.com/problems/longest-common-prefix/
     public static class LongestCommonPrefixSolution
     {
         public static string LongestCommonPrefix(string[] strs)
         {
-            string prefix = string.Empty;
+            StringBuilder prefix = new StringBuilder();
             string shortestWord = strs.ToList().OrderBy(x => x.Length).First();
 
             for (int i = 0; i < shortestWord.Length; i++)
@@ -14,14 +16,14 @@
                 {
                     if (strs[j][i] != shortestWord[i])
                     {
-                        return prefix;
+                        return prefix.ToString();
                     }
                 }
 
-                prefix += shortestWord[i];
+                prefix.Append(shortestWord[i]);
             }
 
-            return prefix;
+            return prefix.ToString();
         }
     }
 }
