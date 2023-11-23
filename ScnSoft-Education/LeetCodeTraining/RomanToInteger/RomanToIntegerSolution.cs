@@ -6,7 +6,6 @@
         public static int RomanToInt(string s)
         {
             int result = 0;
-
             Dictionary<char, int> romanToArabic = new Dictionary<char, int>()
             {
                 {'I', 1},
@@ -30,9 +29,7 @@
                 }
             }
 
-            result = result + romanToArabic[s[s.Length - 1]];
-
-            return result;
+            return result + romanToArabic[s[s.Length - 1]];
         }
     }
 }
