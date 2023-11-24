@@ -21,15 +21,15 @@
             {
                 if (romanToArabic[s[i + 1]] > romanToArabic[s[i]])
                 {
-                    result = result - romanToArabic[s[i]];
+                    result -= romanToArabic[s[i]];
                 }
                 else
                 {
-                    result = result + romanToArabic[s[i]];
+                    result += romanToArabic[s[i]];
                 }
             }
 
-            return result + romanToArabic[s[s.Length - 1]];
+            return result += romanToArabic[s[s.Length - 1]];
         }
     }
 }
