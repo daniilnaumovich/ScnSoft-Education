@@ -8,7 +8,7 @@ namespace LeetCodeTraining.LongestCommonPrefix
         public static string LongestCommonPrefix(string[] strs)
         {
             StringBuilder prefix = new StringBuilder();
-            string shortestWord = strs.ToList().OrderBy(x => x.Length).First();
+            string shortestWord = strs.OrderBy(x => x.Length).First();
 
             for (int i = 0; i < shortestWord.Length; i++)
             {

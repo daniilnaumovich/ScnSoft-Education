@@ -5,11 +5,7 @@ namespace LeetCodeTraining.Tests
     public class LongestCommonPrefixTests
     {
         [Theory]
-        [InlineData(new string[] { "flower", "flow", "flight" }, "fl")]
-        [InlineData(new string[] { "dog", "racecar", "car" }, "")]
-        [InlineData(new string[] { "abc", "abc", "abc", "abc" }, "abc")]
-        [InlineData(new string[] { "def" }, "def")]
-        [InlineData(new string[] { "aabb", "abb" }, "a")]
+        [MemberData(nameof(Data))]
         public void LongestCommonPrefixTest(string[] strs, string expectedResult)
         {
             //Act
@@ -18,5 +14,35 @@ namespace LeetCodeTraining.Tests
             //Assert
             Assert.Equal(expectedResult, result);
         }
+
+        public static IEnumerable<object[]> Data =>
+            new List<object[]>
+            {
+                new object[]
+                {
+                    new string[] { "flower", "flow", "flight" },
+                    "fl"
+                },
+                new object[]
+                {
+                    new string[] { "dog", "racecar", "car" },
+                    string.Empty
+                },
+                new object[]
+                {
+                    new string[] { "abc", "abc", "abc", "abc" },
+                    "abc"
+                },
+                new object[]
+                {
+                    new string[] { "def" },
+                    "def"
+                },
+                new object[]
+                {
+                    new string[] { "aabb", "abb" },
+                    "a"
+                }
+            };
     }
 }
