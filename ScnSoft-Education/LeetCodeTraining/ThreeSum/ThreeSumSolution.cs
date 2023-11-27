@@ -17,7 +17,7 @@
 
                 int lp = i + 1;
                 int rp = nums.Length - 1;
-                int target = -1 * nums[i];
+                int target = -nums[i];
 
                 while (lp < rp)
                 {
@@ -29,17 +29,20 @@
                     }
                     else if (sum > target)
                     {
-                        while (rp >= 1 && nums[rp] == nums[rp - 1])
+                        while (rp > 2 && nums[rp] == nums[rp - 1])
                         {
                             rp--;
                         }
+
                         rp--;
                         continue;
                     }
+
                     while (lp < nums.Length - 1 && nums[lp] == nums[lp + 1])
                     {
                         lp++;
                     }
+
                     lp++;
                 }
             }
