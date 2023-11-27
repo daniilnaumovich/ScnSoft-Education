@@ -7,6 +7,8 @@
         {
             Array.Sort(nums);
             IList<IList<int>> result = new List<IList<int>>();
+            int lp;
+            int rp;
 
             for (int i = 0; i < nums.Length - 3; i++)
             {
@@ -22,8 +24,8 @@
                         continue;
                     }
 
-                    int lp = j + 1;
-                    int rp = nums.Length - 1;
+                    lp = j + 1;
+                    rp = nums.Length - 1;
 
                     while (lp < rp)
                     {
@@ -35,17 +37,20 @@
                         }
                         else if (sum > target)
                         {
-                            while (rp >= 1 && nums[rp] == nums[rp - 1])
+                            while (rp > 2 && nums[rp] == nums[rp - 1])
                             {
                                 rp--;
                             }
+
                             rp--;
                             continue;
                         }
+
                         while (lp < nums.Length - 1 && nums[lp] == nums[lp + 1])
                         {
                             lp++;
                         }
+
                         lp++;
                     }
                 }
