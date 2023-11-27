@@ -6,8 +6,10 @@
         public static int ThreeSumClosest(int[] nums, int target)
         {
             Array.Sort(nums);
-            int diff = int.MaxValue;
+            int maxDiff = 13000;
             int result = 0;
+            int lp;
+            int rp;
 
             for (int i = 0; i < nums.Length - 2; i++)
             {
@@ -16,37 +18,41 @@
                     continue;
                 }
 
-                int lp = i + 1;
-                int rp = nums.Length - 1;
+                lp = i + 1;
+                rp = nums.Length - 1;
 
                 while (lp < rp)
                 {
                     int sum = nums[i] + nums[lp] + nums[rp];
+                    int currentDiff = Math.Abs(sum - target);
 
                     if (sum == target)
                     {
                         return sum;
                     }
 
-                    if (Math.Abs(sum - target) < diff)
+                    if (currentDiff <= maxDiff)
                     {
-                        diff = Math.Abs(sum - target);
+                        maxDiff = currentDiff;
                         result = sum;
                     }
 
                     if (sum > target)
                     {
-                        while (rp >= 1 && nums[rp] == nums[rp - 1])
+                        while (rp > 2 && nums[rp] == nums[rp - 1])
                         {
                             rp--;
                         }
+                        
                         rp--;
                         continue;
                     }
+
                     while (lp < nums.Length - 1 && nums[lp] == nums[lp + 1])
                     {
                         lp++;
                     }
+
                     lp++;
                 }
             }
