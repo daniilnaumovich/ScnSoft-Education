@@ -6,11 +6,7 @@ namespace LeetCodeTraining.Tests
     public class MergeKsortedListsTests
     {
         [Theory]
-        [InlineData("")]
-        [InlineData("", new int[] { })]
-        [InlineData("11234456", new int[] { 1, 4, 5 }, new int[] { 1, 3, 4 }, new int[] { 2, 6 })]
-        [InlineData("123456", new int[] { 1, 2 }, new int[] { 3, 4 }, new int[] { 5, 6 })]
-        [InlineData("12", new int[] { 1 }, new int[] { 2 }, new int[] { })]
+        [MemberData(nameof(Data))]
         public void MergeKListsTests(string expectedResult, params int[][] nums)
         {
             //Arrange
@@ -28,7 +24,42 @@ namespace LeetCodeTraining.Tests
             Assert.Equal(resultString, expectedResult);
         }
 
-        ListNode InitializeNode(int[] numbers)
+        public static IEnumerable<object[]> Data =>
+            new List<object[]>
+            {
+                new object[]
+                {
+                    string.Empty
+                },
+                new object[]
+                {
+                    string.Empty,
+                    new int[] { }
+                },
+                new object[]
+                {
+                    "11234456",
+                    new int[] { 1, 4, 5 },
+                    new int[] { 1, 3, 4 },
+                    new int[] { 2, 6 }
+                },
+                new object[]
+                {
+                    "123456",
+                    new int[] { 1, 2 },
+                    new int[] { 3, 4 },
+                    new int[] { 5, 6 }
+                },
+                new object[]
+                {
+                    "12",
+                    new int[] { 1 },
+                    new int[] { 2 },
+                    new int[] { }
+                }
+            };
+
+        private ListNode InitializeNode(int[] numbers)
         {
             if (numbers.Length == 0)
             {
@@ -51,7 +82,7 @@ namespace LeetCodeTraining.Tests
             return h;
         }
 
-        string DisplayNode(ListNode node)
+        private string DisplayNode(ListNode node)
         {
             StringBuilder sb = new StringBuilder();
 
