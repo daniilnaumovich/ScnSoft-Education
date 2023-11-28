@@ -12,10 +12,10 @@
 
             ListNode first = new ListNode();
             first.next = head;
-
             ListNode tail = first;
             ListNode start = tail.next.next;
             ListNode end = start;
+
             for (int i = 0; i < n - 2; i++)
             {
                 end = end.next;
@@ -39,11 +39,44 @@
                     {
                         tail.next = start;
                     }
+
                     break;
                 }
             }
 
             return first.next;
+        }
+
+        public static ListNode RemoveNthFromEndRec(ListNode head, int n)
+        {
+            ListNode first = new ListNode();
+            first.next = head;
+            int distance = 0;
+
+            CalculateDistance(first);
+
+            return first.next;
+
+            void CalculateDistance(ListNode head)
+            {
+                if (head.next == null)
+                {
+                    distance = 1;
+                    return;
+                }
+
+                CalculateDistance(head.next);
+
+                if (distance == n)
+                {
+                    head.next = head.next.next;
+                }
+
+                if (distance > 0)
+                {
+                    distance++;
+                }
+            }
         }
     }
 

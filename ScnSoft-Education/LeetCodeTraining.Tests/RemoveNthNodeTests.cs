@@ -6,12 +6,7 @@ namespace LeetCodeTraining.Tests
     public class RemoveNthNodeTests
     {
         [Theory]
-        [InlineData(new int[] { 1, 2, 3, 4, 5 }, 2, "1235")]
-        [InlineData(new int[] { 1, 2, 3, 4, 5, 6, 7 }, 3, "123467")]
-        [InlineData(new int[] { 1, 2, 3, 4, 5 }, 5, "2345")]
-        [InlineData(new int[] { 1, 2, 3, 4, 5 }, 1, "1234")]
-        [InlineData(new int[] { 1 }, 1, "")]
-        [InlineData(new int[] { 1, 2 }, 1, "1")]
+        [MemberData(nameof(Data))]
         public void RemoveNthNodeTest(int[] list, int number, string expectedResult)
         {
             //Arrange
@@ -23,10 +18,65 @@ namespace LeetCodeTraining.Tests
 
             //Assert
             Assert.Equal(expectedResult, resultString);
-
         }
 
-        static ListNode InitializeNode(int[] numbers)
+        [Theory]
+        [MemberData(nameof(Data))]
+        public void RemoveNthNodeRecTest(int[] list, int number, string expectedResult)
+        {
+            //Arrange
+            ListNode head = InitializeNode(list);
+
+            //Act
+            ListNode result = RemoveNthNodeSolution.RemoveNthFromEndRec(head, number);
+            string resultString = DisplayNode(result);
+
+            //Assert
+            Assert.Equal(expectedResult, resultString);
+        }
+
+        public static IEnumerable<object[]> Data =>
+            new List<object[]>
+            {
+                new object[]
+                {
+                    new int[] { 1, 2, 3, 4, 5 },
+                    2,
+                    "1235"
+                },
+                new object[]
+                {
+                    new int[] { 1, 2, 3, 4, 5, 6, 7 },
+                    3,
+                    "123467"
+                },
+                new object[]
+                {
+                    new int[] { 1, 2, 3, 4, 5 },
+                    5,
+                    "2345"
+                },
+                new object[]
+                {
+                    new int[] { 1, 2, 3, 4, 5 },
+                    1,
+                    "1234"
+                },
+                new object[]
+                {
+                    new int[] { 1 },
+                    1,
+                    string.Empty
+                },
+                new object[]
+                {
+                    new int[] { 1, 2 },
+                    1,
+                    "1"
+                }
+            };
+
+        private ListNode InitializeNode(int[] numbers)
         {
             if (numbers.Length == 0)
             {
@@ -49,7 +99,7 @@ namespace LeetCodeTraining.Tests
             return h;
         }
 
-        static string DisplayNode(ListNode node)
+        private string DisplayNode(ListNode node)
         {
             StringBuilder sb = new StringBuilder();
 
