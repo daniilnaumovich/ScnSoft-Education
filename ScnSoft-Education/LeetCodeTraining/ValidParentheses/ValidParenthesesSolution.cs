@@ -18,18 +18,18 @@
                 if (parentheses.ContainsKey(s[i]))
                 {
                     st.Push(s[i]);
+                    continue;
                 }
-                else if (st.TryPeek(out char p) && parentheses[p] == s[i])
+
+                if (st.Any() && parentheses[st.Pop()] == s[i])
                 {
-                    st.Pop();
+                    continue;
                 }
-                else
-                {
-                    return false;
-                }
+                
+                return false;
             }
 
-            if (st.TryPeek(out char c))
+            if (st.Any())
             {
                 return false;
             }
