@@ -12,32 +12,31 @@
             {
                 if (list1.val > list2.val)
                 {
-                    start.next = list2;
-                    start = start.next;
-                    list2 = list2.next;
+                    list2 = AddNode(list2);
                 }
                 else
                 {
-                    start.next = list1;
-                    start = start.next;
-                    list1 = list1.next;
+                    list1 = AddNode(list1);
                 }
             }
 
             while (list1 != null)
             {
-                start.next = list1;
-                start = start.next;
-                list1 = list1.next;
+                list1 = AddNode(list1);
             }
             while (list2 != null)
             {
-                start.next = list2;
-                start = start.next;
-                list2 = list2.next;
+                list2 = AddNode(list2);
             }
 
             return head.next;
+
+            ListNode AddNode(ListNode node)
+            {
+                start.next = node;
+                start = start.next;
+                return node.next;
+            }
         }
     }
 

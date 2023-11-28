@@ -6,12 +6,7 @@ namespace LeetCodeTraining.Tests
     public class MergeSortedListsTests
     {
         [Theory]
-        [InlineData(new int[] { 1, 2, 4 }, new int[] { 1, 3, 4 }, "112344")]
-        [InlineData(new int[] { }, new int[] { }, "")]
-        [InlineData(new int[] { }, new int[] { 0 }, "0")]
-        [InlineData(new int[] { 1, 1 }, new int[] { 1, 1 }, "1111")]
-        [InlineData(new int[] { 1, 2, 3 }, new int[] { 4, 5, 6 }, "123456")]
-        [InlineData(new int[] { 2, 3, 4 }, new int[] { 1, 5 }, "12345")]
+        [MemberData(nameof(Data))]
         public void MergeTwoListsTests(int[] list1, int[] list2, string expectedResult)
         {
             //Arrange
@@ -25,6 +20,47 @@ namespace LeetCodeTraining.Tests
             //Assert
             Assert.Equal(expectedResult, resultString);
         }
+
+        public static IEnumerable<object[]> Data =>
+            new List<object[]>
+            {
+                new object[]
+                {
+                    new int[] { 1, 2, 4 },
+                    new int[] { 1, 3, 4 },
+                    "112344"
+                },
+                new object[]
+                {
+                    new int[] { },
+                    new int[] { },
+                    string.Empty
+                },
+                new object[]
+                {
+                    new int[] { },
+                    new int[] { 0 },
+                    "0"
+                },
+                new object[]
+                {
+                    new int[] { 1, 1 },
+                    new int[] { 1, 1 },
+                    "1111"
+                },
+                new object[]
+                {
+                    new int[] { 1, 2, 3 },
+                    new int[] { 4, 5, 6 },
+                    "123456"
+                },
+                new object[]
+                {
+                    new int[] { 2, 3, 4 },
+                    new int[] { 1, 5 },
+                    "12345"
+                }
+            };
 
         public ListNode InitializeNode(int[] numbers)
         {
