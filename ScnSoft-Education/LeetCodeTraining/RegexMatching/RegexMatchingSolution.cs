@@ -75,11 +75,7 @@
 
             bool AreCompatible(int pIndex, int sIndex)
             {
-                if (s[sIndex] == p[pIndex])
-                {
-                    return true;
-                }
-                if (p[pIndex] == '.')
+                if (s[sIndex] == p[pIndex] || p[pIndex] == '.')
                 {
                     return true;
                 }
