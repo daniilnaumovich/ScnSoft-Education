@@ -11,6 +11,7 @@
             }
 
             ListNode kth = head;
+
             for (int i = 0; i < k; i++)
             {
                 if (kth == null)
@@ -23,17 +24,17 @@
 
             ListNode prev;
             ListNode post = head.next;
-
-            prev = head;
-            head = post;
-            prev.next = ReverseKGroup(kth, k);
-            post = head.next;
-            head.next = prev;
-
-            for (int i = 0; i < k - 2; i++)
+            
+            for (int i = 0; i < k - 1; i++)
             {
                 prev = head;
                 head = post;
+
+                if (i == 0)
+                {
+                    prev.next = ReverseKGroup(kth, k);
+                }
+
                 post = head.next;
                 head.next = prev;
             }
@@ -61,6 +62,7 @@
             {
                 ListNode n = new ListNode(numbers[1]);
                 this.next = n;
+
                 for (int i = 2; i < numbers.Length; i++)
                 {
                     n.next = new ListNode(numbers[i]);
@@ -84,8 +86,7 @@
             {
                 if (node.val == item.val)
                 {
-                    if ((node.next == null && item.next != null) ||
-                        (node.next != null && item.next == null))
+                    if ((node.next == null) != (item.next == null))
                     {
                         return false;
                     }
