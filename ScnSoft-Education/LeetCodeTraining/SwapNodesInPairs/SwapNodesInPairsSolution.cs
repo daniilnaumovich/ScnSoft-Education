@@ -44,6 +44,7 @@
             {
                 ListNode n = new ListNode(numbers[1]);
                 this.next = n;
+
                 for (int i = 2; i < numbers.Length; i++)
                 {
                     n.next = new ListNode(numbers[i]);
@@ -67,8 +68,7 @@
             {
                 if (node.val == item.val)
                 {
-                    if ((node.next == null && item.next != null) ||
-                        (node.next != null && item.next == null))
+                    if ((node.next == null) != (item.next == null))
                     {
                         return false;
                     }
