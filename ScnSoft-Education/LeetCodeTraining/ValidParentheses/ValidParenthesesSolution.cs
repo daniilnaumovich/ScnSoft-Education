@@ -21,7 +21,7 @@
                     continue;
                 }
 
-                if (st.Any() && parentheses[st.Pop()] == s[i])
+                if (st.TryPop(out char p) && parentheses[p] == s[i])
                 {
                     continue;
                 }
