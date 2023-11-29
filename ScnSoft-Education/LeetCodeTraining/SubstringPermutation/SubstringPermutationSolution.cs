@@ -8,6 +8,8 @@
             Dictionary<string, int> freqStandard = new Dictionary<string, int>();
             Dictionary<string, int> freqEntry = new Dictionary<string, int>();
             IList<int> result = new List<int>();
+            bool isResultEntry = true;
+            string sub;
 
             for (int i = 0; i < words.Length; i++)
             {
@@ -16,12 +18,10 @@
                     freqStandard[words[i]]++;
                     continue;
                 }
+
                 freqStandard.Add(words[i], 1);
                 freqEntry.Add(words[i], 0);
             }
-
-            string sub;
-            bool isResultEntry = true;
 
             for (int i = 0; i < s.Length - words.Length * words[0].Length + 1; i++)
             {
