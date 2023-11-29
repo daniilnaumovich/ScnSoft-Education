@@ -24,6 +24,7 @@
             {
                 list1 = AddNode(list1);
             }
+
             while (list2 != null)
             {
                 list2 = AddNode(list2);
