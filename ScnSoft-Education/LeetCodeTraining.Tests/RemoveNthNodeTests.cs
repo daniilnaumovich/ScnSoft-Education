@@ -89,6 +89,7 @@ namespace LeetCodeTraining.Tests
             {
                 ListNode n = new ListNode(numbers[1]);
                 h.next = n;
+
                 for (int i = 2; i < numbers.Length; i++)
                 {
                     n.next = new ListNode(numbers[i]);
@@ -110,11 +111,10 @@ namespace LeetCodeTraining.Tests
                 if (node.next != null)
                 {
                     node = node.next;
+                    continue;
                 }
-                else
-                {
-                    break;
-                }
+
+                break;
             }
 
             return sb.ToString();
