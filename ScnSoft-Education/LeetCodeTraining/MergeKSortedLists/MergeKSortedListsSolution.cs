@@ -22,7 +22,7 @@
                 }
             }
 
-            while (queue.TryDequeue(out ListNode currentNode, out int value))
+            while (queue.TryDequeue(out ListNode currentNode, out _))
             {
                 node.next = currentNode;
                 node = node.next;
