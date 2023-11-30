@@ -68,7 +68,7 @@
             {
                 if (node.val == item.val)
                 {
-                    if ((node.next == null) != (item.next == null))
+                    if (node.next == null != (item.next == null))
                     {
                         return false;
                     }
