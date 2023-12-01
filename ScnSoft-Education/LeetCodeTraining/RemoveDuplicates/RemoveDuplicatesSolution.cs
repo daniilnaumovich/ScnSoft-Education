@@ -9,10 +9,9 @@
 
             for (int i = 1; i < nums.Length; i++)
             {
-                if (nums[i] > nums[i - 1])
+                if (nums[i] != nums[i - 1])
                 {
-                    nums[index] = nums[i];
-                    index++;
+                    nums[index++] = nums[i];
                 }
             }
 
