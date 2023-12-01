@@ -1,4 +1,7 @@
-﻿namespace LeetCodeTraining.NextPermutation
+﻿using System;
+using System.Reflection;
+
+namespace LeetCodeTraining.NextPermutation
 {
     //https://leetcode.com/problems/next-permutation/
     public static class NextPermutationSolution
@@ -21,13 +24,10 @@
                 }
             }
 
-            if (revertIndex == -1 || swapIndex == -1)
+            if (revertIndex != -1 && swapIndex != -1)
             {
-                Array.Sort(nums);
-                return;
+                Swap(ref nums[revertIndex], ref nums[swapIndex]);
             }
-
-            Swap(ref nums[revertIndex], ref nums[swapIndex]);
 
             for (int i = 0; i < (nums.Length - revertIndex - 1) / 2; i++)
             {
