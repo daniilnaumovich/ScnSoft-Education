@@ -11,8 +11,7 @@
             {
                 if (nums[i] != val)
                 {
-                    nums[currentIndex] = nums[i];
-                    currentIndex++;
+                    nums[currentIndex++] = nums[i];
                 }
             }
 
