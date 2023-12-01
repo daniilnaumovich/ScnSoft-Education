@@ -18,8 +18,8 @@
             int counter = 0;
             bool negativeResult = (dividend < 0 && divisor > 0) ||
                                   (dividend > 0 && divisor < 0);
-            dividend = dividend > 0 ? dividend -= dividend + dividend : dividend;
-            divisor = divisor < 0 ? divisor -= divisor + divisor : divisor;
+            dividend = dividend > 0 ? -dividend : dividend;
+            divisor = divisor < 0 ? -divisor : divisor;
 
             while (dividend < 0)
             {
@@ -29,10 +29,10 @@
 
             if (dividend == 0)
             {
-                return negativeResult ? counter -= counter + counter : counter;
+                return negativeResult ? -counter : counter;
             }
 
-            return negativeResult ? counter -= counter + counter - 1 : counter - 1;
+            return negativeResult ? -counter + 1 : counter - 1;
         }
     }
 }
