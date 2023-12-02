@@ -93,9 +93,9 @@ namespace LeetCodeTraining.BuildingH2O
 
     public class OxygenGenerator
     {
-        private Random rnd = new Random();
-        private H2O water;
-        private Action generator;
+        private readonly Random rnd = new Random();
+        private readonly H2O water;
+        private readonly Action generator;
 
         public OxygenGenerator(H2O h2o, Action generateElement)
         {
