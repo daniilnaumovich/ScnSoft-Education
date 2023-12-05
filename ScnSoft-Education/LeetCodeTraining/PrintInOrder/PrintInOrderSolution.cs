@@ -44,8 +44,8 @@ namespace LeetCodeTraining.PrintInOrder
 
     public class Foo
     {
-        ManualResetEvent firstCompleted = new ManualResetEvent(false);
-        ManualResetEvent secondCompleted = new ManualResetEvent(false);
+        private ManualResetEvent firstCompleted = new ManualResetEvent(false);
+        private ManualResetEvent secondCompleted = new ManualResetEvent(false);
 
         public Foo() { }
 
@@ -74,7 +74,7 @@ namespace LeetCodeTraining.PrintInOrder
 
     public class SequenceWriter
     {
-        private readonly Random rnd = new Random();
+        private Random rnd = new Random();
         private readonly Foo foo;
         private readonly int number;
         private readonly Action print;
