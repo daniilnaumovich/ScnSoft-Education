@@ -1,7 +1,4 @@
-﻿using System;
-using System.Reflection;
-
-namespace LeetCodeTraining.NextPermutation
+﻿namespace LeetCodeTraining.NextPermutation
 {
     //https://leetcode.com/problems/next-permutation/
     public static class NextPermutationSolution
