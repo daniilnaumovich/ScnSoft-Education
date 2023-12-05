@@ -38,10 +38,10 @@ namespace LeetCodeTraining.BuildingH2O
 
     public class H2O
     {
-        SemaphoreSlim hydrogen = new SemaphoreSlim(0, 2);
-        SemaphoreSlim oxygen = new SemaphoreSlim(1, 1);
-        object locker = new object();
-        int hydrogenCounter = 0;
+        private SemaphoreSlim hydrogen = new SemaphoreSlim(0, 2);
+        private SemaphoreSlim oxygen = new SemaphoreSlim(1, 1);
+        private object locker = new object();
+        private int hydrogenCounter = 0;
 
         public H2O() { }
 
