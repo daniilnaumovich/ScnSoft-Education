@@ -5,21 +5,23 @@
     {
         public static void SortColors(int[] nums)
         {
-            int rptr = 0;
-            int bptr = nums.Length;
+            int lp = 0;
+            int rp = nums.Length;
 
-            for (int i = 0; i < bptr; i++)
+            for (int i = 0; i < rp; i++)
             {
                 if (nums[i] == 0)
                 {
-                    Swap(rptr, i);
-                    rptr++;
+                    Swap(lp, i);
+                    lp++;
                     continue;
                 }
+
                 if (nums[i] == 2)
                 {
-                    Swap(i, bptr - 1);
-                    bptr--;
+                    Swap(i, rp - 1);
+                    rp--;
+
                     if (nums[i] != 1)
                     {
                         i--;
